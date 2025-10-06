@@ -242,20 +242,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+**Contacts**
 
-## 🙏 Acknowledgments
+- Made by **Albari Yasir Wahid** – check my [LinkedIn](https://www.linkedin.com/in/45379328a)
 
-- [Flutter Team](https://flutter.dev) for the amazing framework
-- [Material Design](https://material.io) for design guidelines
-- [Lottie](https://lottiefiles.com) for beautiful animations
-- [Google Fonts](https://fonts.google.com) for typography
 
----
-
-<div align="center">
-  <p>Made with ❤️ using Flutter</p>
-  <img src="https://raw.githubusercontent.com/flutter/website/main/src/_assets/image/flutter-lockup.png" alt="Flutter" width="150">
-</div>
