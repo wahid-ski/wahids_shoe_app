@@ -7,15 +7,21 @@ import 'package:shop_app_flutter/providers/favorite_provider.dart';
 import 'package:shop_app_flutter/providers/theme_provider.dart';
 import 'package:shop_app_flutter/providers/search_provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final themeProvider = ThemeProvider();
+  await themeProvider.loadTheme();
+
+  runApp(MyApp(themeProvider: themeProvider));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.themeProvider});
+
+  final ThemeProvider themeProvider;
 
   @override
-  State<MyApp> createState() => _MyAppState(); 
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -46,7 +52,7 @@ class _MyAppState extends State<MyApp> {
     final darkTheme = ThemeData(
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
-       seedColor: const Color.fromARGB(255, 227, 197, 2),
+        seedColor: const Color.fromARGB(255, 227, 197, 2),
         primary: const Color.fromARGB(255, 230, 147, 21),
         brightness: Brightness.dark,
       ),
@@ -67,17 +73,15 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CartProvider()),
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider.value(value: widget.themeProvider),
         ChangeNotifierProvider(create: (context) => SearchProvider()),
         ChangeNotifierProvider(create: (context) => FavoriteProvider()),
       ],
-      child: 
-      Consumer<ThemeProvider>(
-    
+      child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
           return MaterialApp(
             title: 'Shoe Store',
-            themeMode: themeProvider.themeMode, 
+            themeMode: themeProvider.themeMode,
             theme: lightTheme,
             darkTheme: darkTheme,
             home: const SplashScreen(),
